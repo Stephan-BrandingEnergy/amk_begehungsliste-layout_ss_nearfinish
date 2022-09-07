@@ -1,0 +1,13 @@
+diff --git a/node_modules/signature_pad/dist/signature_pad.mjs b/node_modules/signature_pad/dist/signature_pad.mjs
+index ce5f5a4..a3b7e1f 100644
+--- a/node_modules/signature_pad/dist/signature_pad.mjs
++++ b/node_modules/signature_pad/dist/signature_pad.mjs
+@@ -320,7 +320,7 @@ SignaturePad.prototype._handleMouseEvents = function () {
+ 
+   this._canvas.addEventListener('mousedown', this._handleMouseDown);
+   this._canvas.addEventListener('mousemove', this._handleMouseMove);
+-  document.addEventListener('mouseup', this._handleMouseUp);
++  this._canvas.addEventListener('mouseup', this._handleMouseUp);
+ };
+ 
+ SignaturePad.prototype._handleTouchEvents = function () {

@@ -1,0 +1,148 @@
+# Created by .ignore support plugin (hsz.mobi)
+### JetBrains template
+# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+
+# User-specific stuff
+.idea
+*.iml
+
+
+### Linux template
+*~
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
+
+### Cordova template
+# gitignore template for the Cordova framework
+# website: https://cordova.apache.org/
+#
+# Recommended template: Node.gitignore
+
+# App platform binaries and built files
+/platforms
+
+# Optional to ignore plugin Git clones
+/plugins
+
+### Node template
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Dependency directories
+node_modules/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+
+# Phonegap www-Ordner, da automatisch auf ./angular gebaut wird
+# /www # muss doch ins repo, für phonegap build
+www/main.85942827da3c2c39afa9.js
+www/main.49e23d808e19f93ff7ab.js
+www/main.d5b16c06511af72b87ea.js
+/www/.htaccess
+/www/assets/res/.pgbomit
+/www/3rdpartylicenses.txt
+/www/assets/img/add_photo.png
+/www/assets/bglogin.png
+/www/cordova.js
+/www/assets/res/screen/ios/Default@2x~ipad~anyany.png
+/www/assets/res/screen/ios/Default@2x~ipad~comany.png
+/www/assets/res/screen/ios/Default@2x~iphone.png
+/www/assets/res/screen/ios/Default@2x~iphone~anyany.png
+/www/assets/res/screen/ios/Default@2x~iphone~comany.png
+/www/assets/res/screen/ios/Default@2x~iphone~comcom.png
+/www/assets/res/screen/ios/Default@3x~iphone~anyany.png
+/www/assets/res/screen/ios/Default@3x~iphone~anycom.png
+/www/assets/res/screen/ios/Default@3x~iphone~comany.png
+/www/assets/res/screen/ios/Default-568h@2x~iphone.png
+/www/assets/res/screen/ios/Default-667h.png
+/www/assets/res/screen/ios/Default-736h.png
+/www/assets/res/screen/ios/Default-Landscape@2x~ipad.png
+/www/assets/res/screen/ios/Default-Landscape~ipad.png
+/www/assets/res/screen/ios/Default-Portrait@2x~ipad.png
+/www/assets/res/screen/ios/Default-Portrait~ipad.png
+/www/assets/res/screen/ios/Default~iphone.png
+/www/assets/img/graph1.png
+/www/assets/res/icon/android/hdpi.png
+/www/assets/img/hintergrund.jpg
+/www/assets/res/icon/ios/icon.png
+/www/assets/icon.png
+/www/assets/res/icon/ios/icon@2x.png
+/www/assets/res/icon/ios/icon-60.png
+/www/assets/res/icon/ios/icon-60@2x.png
+/www/assets/res/icon/ios/icon-60@3x.png
+/www/assets/res/icon/ios/icon-72.png
+/www/assets/res/icon/ios/icon-72@2x.png
+/www/assets/res/icon/ios/icon-76.png
+/www/assets/res/icon/ios/icon-76@2x.png
+/www/assets/res/icon/ios/icon-83.5@2x.png
+/www/assets/res/icon/ios/icon-167.png
+/www/assets/res/icon/ios/icon-1024.png
+/www/assets/res/icon/ios/icon-small.png
+/www/assets/res/icon/ios/icon-small@2x.png
+/www/assets/res/icon/ios/icon-small@3x.png
+/www/assets/res/icon/ios/icon-small-40.png
+/www/assets/res/icon/ios/icon-small-40@2x.png
+/www/assets/res/icon/ios/icon-small-40@3x.png
+/www/assets/res/icon/ios/icon-small-50.png
+/www/assets/res/icon/ios/icon-small-50@2x.png
+/www/assets/img/icon_problem.png
+/www/assets/img/icon_scan.png
+/www/index.html
+/www/ionicons.96f1c901c087fb64019f.woff2
+/www/ionicons.99b863497156d4478ec3.woff
+/www/ionicons.a558ac78b554eefa1817.eot
+/www/ionicons.d659209138fc7c28c23a.svg
+/www/ionicons.ef4a9f280b0e411ddf6c.ttf
+/www/assets/img/kis-logo.png
+/www/assets/res/icon/android/ldpi.png
+/www/loading.300f222f56cb9285e2ba.svg
+/www/assets/img/loading.svg
+/www/assets/img/logo-kis.png
+/www/main.8d41d3ac2e21c8bda01c.js
+/www/assets/res/icon/android/mdpi.png
+/www/assets/img/new-document.png
+/www/assets/img/nfc-checkpoint.png
+/www/assets/img/pdf1.png
+/www/polyfills.5728f680576ca47e99fe.js
+/www/runtime.858f8dd898b75fe86926.js
+/www/scripts.fdd6c24fc631fac37448.js
+/www/assets/splash.png
+/www/assets/res/screen/android/splash-land-hdpi.png
+/www/assets/res/screen/android/splash-land-ldpi.png
+/www/assets/res/screen/android/splash-land-mdpi.png
+/www/assets/res/screen/android/splash-land-xhdpi.png
+/www/assets/res/screen/android/splash-land-xxhdpi.png
+/www/assets/res/screen/android/splash-land-xxxhdpi.png
+/www/assets/res/screen/android/splash-port-hdpi.png
+/www/assets/res/screen/android/splash-port-ldpi.png
+/www/assets/res/screen/android/splash-port-mdpi.png
+/www/assets/res/screen/android/splash-port-xhdpi.png
+/www/assets/res/screen/android/splash-port-xxhdpi.png
+/www/assets/res/screen/android/splash-port-xxxhdpi.png
+/www/styles.2857d72718da00d10251.css
+/www/assets/res/icon/android/xhdpi.png
+/www/assets/res/icon/android/xxhdpi.png
+/www/assets/res/icon/android/xxxhdpi.png

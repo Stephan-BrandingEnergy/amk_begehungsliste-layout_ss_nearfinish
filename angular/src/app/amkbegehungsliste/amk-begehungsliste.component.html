@@ -1,0 +1,22 @@
+<div *ngIf="!rundgang && !viewstate.loading" class="panel p-2">
+  <div class="mt-3 text-center alert alert-danger">
+    <h3>Aktuell ist kein Rundgang notwendig.</h3>
+  </div>
+</div>
+<div class="loading alert alert-info" *ngIf="viewstate.loading">Einen Moment bitte. <br>Rundgang wird komplett geladen.
+  <div class="bt-3 text-center">
+    <button [routerLink]="['/']" class="btn btn-light">Abbrechen</button>
+  </div>
+</div>
+
+<div *ngIf="rundgang" class="panel p-2">
+  <!-- <pre>{{rundgang | json}}</pre>-->
+
+  <h2 *ngIf="rundgang">{{rundgang.kurztext}} - {{rundgang.uid}}</h2>
+
+  <div *ngIf="rundgang" class="row">
+    <div class="col-6">Läufer: {{rundgang.verantwortlicher.firstName}} {{rundgang.verantwortlicher.lastName}}</div>
+  </div>
+
+</div>
+

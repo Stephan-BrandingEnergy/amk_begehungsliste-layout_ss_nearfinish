@@ -1,0 +1,87 @@
+<div class="p-3">
+
+
+  <ng-container *ngIf="rundgang">
+    <a [routerLink]="['/rundgang','list']" class=""><h1 class="btn btn-dark btn-block text-uppercase">
+     <span class=" ion ion-ios-arrow-back" style="position: absolute;left: 27px;"></span>
+   Rundgang {{rundgang.kurztext}}</h1></a>
+    <div class="card">
+      <div class="p-1">
+        <div *ngIf="rundgang.schwerpunkt"><b>Schwerpunkt:</b>  {{rundgang.schwerpunkt.name}}</div>
+        <div *ngIf="rundgang"><b>Verantwortlicher: </b> {{rundgang.verantwortlicher?.firstName}}  {{rundgang.verantwortlicher?.lastName}}</div>
+        <div><b>Teilnehmer: </b>
+
+            <span *ngFor="let teilnehmereinzeln of rundgang.teilnehmer; let i = index">{{teilnehmereinzeln.firstName}}  {{teilnehmereinzeln.lastName}}<span *ngIf="i < (rundgang.teilnehmer.length-1)">, </span>  </span>
+
+        </div>
+      </div>
+    </div>
+    <div class="p-">
+      <div class="card">
+        <div class="" style="height: calc(100vh - 270px);
+overflow: scroll;">
+
+          <table class="table table-sm w-100" >
+            <tr>
+              <th>Zeit</th>
+              <th>Mangel</th>
+              <th>Bild</th>
+              <th>Frist</th>
+              <th class="d-none d-sm-table-cell">Massnahme</th>
+              <th class="d-none d-sm-table-cell">Verantw.</th>
+              <th></th>
+            </tr>
+
+            <tbody *ngIf="rundgang">
+
+            <tr  *ngFor="let mangel of rundgang.maengel">
+              <td>
+              <a [routerLink]="['/mangel', 'overview']" [state]="{rundgang:rundgang,mangel:mangel}" [queryParams]="{mangel_uid: mangel.uid}">{{mangel.tstamp|date:"medium":undefined:"de"}}
+                </a>
+              </td>
+              <td>
+              <a [routerLink]="['/mangel', 'overview']" [state]="{rundgang:rundgang,mangel:mangel}" [queryParams]="{mangel_uid: mangel.uid}">{{mangel.text}}
+                </a>
+              </td>
+              <td>
+                <a [routerLink]="['/mangel', 'overview']" [state]="{rundgang:rundgang,mangel:mangel}" [queryParams]="{mangel_uid: mangel.uid}"><div *ngIf="mangel.images" class="d-flex justify-content-start align-content-center align-items-baseline flex-wrap mb-3"
+                         style="gap: 10px">
+                <img *ngFor="let i of mangel.images"
+                     [src]="i"
+                     style="width: 20px; height: auto"
+                     alt="">
+                </div></a></td>
+              <td><a [routerLink]="['/mangel', 'overview']" [state]="{rundgang:rundgang,mangel:mangel}" [queryParams]="{mangel_uid: mangel.uid}"><span *ngIf="mangel.termin" > {{mangel.termin | date:'mediumDate':'+01:00':'de'}}</span></a></td>
+              <td class="d-none d-sm-table-cell"><a [routerLink]="['/mangel', 'overview']" [state]="{rundgang:rundgang,mangel:mangel}" [queryParams]="{mangel_uid: mangel.uid}">
+                <span *ngIf="mangel.massnahme">{{mangel.massnahme.name}}</span>
+              </a></td>
+              <td class="d-none d-sm-table-cell"><a [routerLink]="['/mangel', 'overview']" [state]="{rundgang:rundgang,mangel:mangel}" [queryParams]="{mangel_uid: mangel.uid}">
+                <span *ngIf="mangel.verantwortlicher">{{mangel.verantwortlicher.firstName}} {{mangel.verantwortlicher.lastName}}</span>
+              </a></td> <!-- text des ersten Mangels -->
+           <!--   <pre>{{mangel|json}}</pre>-->
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+
+
+      <div class="fixed-bottom m-3">
+     <!--   <a [routerLink]="['/rundgang','list']" class="btn btn-xlg  btn-block btn-light text-uppercase">
+         << Übersicht Rundgänge
+        </a>-->
+        <a  [routerLink]="['/mangel', 'bereich']"  [state]="{rundgang:rundgang}"  class="btn btn-xlg  btn-block btn-primary text-uppercase">
+          Neuer Mangel
+        </a>
+      </div>
+
+    </div>
+
+  </ng-container>
+
+
+
+
+</div>
+

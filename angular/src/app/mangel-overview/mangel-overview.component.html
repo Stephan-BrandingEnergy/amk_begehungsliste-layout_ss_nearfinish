@@ -1,0 +1,68 @@
+<div class="p-3">
+
+  <h1 class="btn btn-dark btn-block text-uppercase">Rundgang {{rundgang.schwerpunkt.name}}</h1>
+
+  <ng-container *ngIf="mangel">
+    <div class="card">
+      <div class="card-body">
+
+        <div *ngIf="mangel.bereich">
+          Bereich<h3>{{mangel.bereich.name}}</h3>
+        </div>
+        <div *ngIf="mangel.tstamp">
+          Datum/Zeit
+          <h3>{{mangel.tstamp|date:"medium":'+02:00':"de"}}</h3>
+        </div>
+        <div *ngIf="!mangel.tstamp">
+          Datum/Zeit
+          <h3>{{currentDate|date:"medium":'+02:00':"de"}}</h3>
+        </div>
+
+
+        <div *ngIf="mangel.text">
+          Mangel
+          <h3>{{mangel.text}}</h3>
+        </div>
+
+        <div class="d-flex justify-content-start align-content-center align-items-baseline flex-wrap mb-3"
+             style="gap: 10px">
+          <img *ngFor="let i of mangel.images"
+               [src]="i"
+               style="width: 100px; height: auto"
+               alt="">
+        </div>
+
+        <div *ngIf="mangel.massnahme">
+          Massnahme<h3>{{mangel.massnahme.name}}</h3>
+        </div>
+
+        <div *ngIf="mangel.verantwortlicher">
+          Verantwortlicher
+          <h3>
+           {{mangel.verantwortlicher.firstName}} {{mangel.verantwortlicher.lastName}}
+          </h3>
+        </div>
+
+        <div *ngIf="mangel.termin">
+          Frist
+          <h3>
+            {{mangel.termin | date:'mediumDate':'+02:00':'de'}}
+          </h3>
+        </div>
+
+      </div>
+    </div>
+  </ng-container>
+
+
+  <div class="fixed-bottom m-3">
+    <button disabled="{{viewstate.disabled}}" (click)="saveRundgang(rundgang)"
+            type="button"
+            class="btn btn-xlg  btn-block btn-primary text-uppercase">
+      Mangel speichern
+    </button>
+  </div>
+
+
+</div>
+

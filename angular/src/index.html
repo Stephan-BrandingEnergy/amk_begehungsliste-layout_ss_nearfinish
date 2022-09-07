@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline' fonts.googleapis.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src 'self' data:">
+
+  <title>Amkbegehungsliste</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<app-root></app-root>
+<script>
+  window.addEventListener      = function() {
+    (window.EventTarget || Window).prototype.addEventListener.apply(this, arguments);
+  };
+  window.removeEventListener   = function() {
+    (window.EventTarget || Window).prototype.removeEventListener.apply(this, arguments);
+  };
+  document.addEventListener    = function() {
+    (window.EventTarget || Document).prototype.addEventListener.apply(this, arguments);
+  };
+  document.removeEventListener = function() {
+    (window.EventTarget || Document).prototype.removeEventListener.apply(this, arguments);
+  };
+</script>
+<script type="text/javascript" src="cordova.js"></script>
+</body>
+</html>

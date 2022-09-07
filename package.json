@@ -1,0 +1,51 @@
+{
+  "name": "amk_begehungsliste",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "run": "phonegap run android"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stefanmatthes/amk_begehungsliste.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stefanmatthes/amk_begehungsliste/issues"
+  },
+  "homepage": "https://github.com/stefanmatthes/amk_begehungsliste#readme",
+  "devDependencies": {
+    "@angular/cli": "^8.3.29",
+    "cordova": "^9.0.0",
+    "cordova-plugin-decimal-keyboard": "git+https://github.com/mrchandoo/cordova-plugin-decimal-keyboard.git",
+    "phonegap": "^8.2.2",
+    "cordova-plugin-camera": "4.1.0"
+  },
+  "dependencies": {
+    "cordova-android": "^7.1.4",
+    "cordova-plugin-x-toast": "2.7.2",
+    "phonegap-nfc": "git+https://github.com/fredmaggiowski/phonegap-nfc.git"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-x-toast": {},
+      "phonegap-nfc": {},
+      "cordova-plugin-decimal-keyboard": {},
+      "cordova-plugin-camera": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-dialogs": {},
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-file": {}
+    }
+  },
+  "browserslist": [
+    "last 1 Firefox version",
+    "last 1 Chrome version",
+    "iOS >= 10",
+    "Android >= 56"
+  ]
+}

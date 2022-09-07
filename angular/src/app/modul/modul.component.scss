@@ -1,0 +1,10 @@
+
+signature-pad {
+  display: inline-block;
+  border: 1px solid var(--dark);
+
+  canvas {
+    background-color: var(--light);
+    display: block;
+  }
+}

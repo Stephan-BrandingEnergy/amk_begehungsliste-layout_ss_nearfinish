@@ -1,0 +1,47 @@
+<div class="p-3">
+
+  <h1 class="btn btn-dark btn-block text-uppercase">Mangel definieren</h1>
+
+  <ng-container *ngIf="mangel">
+
+    <textarea class="form-control"
+              placeholder="Beschreibung des Mangels"
+              [(ngModel)]="mangel.text"></textarea>
+
+    <hr *ngIf="mangel.images.length">
+
+    <div class="d-flex justify-content-start align-content-center align-items-baseline flex-wrap"
+         style="gap: 10px">
+      <img *ngFor="let i of mangel.images"
+           [src]="i"
+           style="width: 100px; height: auto"
+           alt="">
+    </div>
+
+
+    <div class="d-flex  justify-content-around align-content-center my-3">
+      <!--<button mat-fab>
+        <mat-icon>microphone</mat-icon>
+      </button>-->
+      <button mat-fab (click)="fileInput.click()">
+        <mat-icon>image</mat-icon>
+        <input #fileInput type="file" accept="image/*" multiple (change)="onFileSelected($event)" style="display:none;" />
+      </button>
+     <!-- <button mat-fab>
+        <mat-icon>camera</mat-icon>
+      </button>-->
+    </div>
+
+  </ng-container>
+
+
+  <div class="fixed-bottom m-3">
+    <a [routerLink]="['/mangel', 'massnahme']"
+       [state]="{rundgang:rundgang,mangel:mangel}"
+       class="btn btn-xlg  btn-block btn-primary text-uppercase">
+      Weiter
+    </a>
+  </div>
+
+</div>
+

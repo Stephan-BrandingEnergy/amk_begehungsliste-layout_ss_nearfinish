@@ -1,0 +1,35 @@
+<div class="p-3">
+
+  <h1 class="btn btn-dark btn-block text-uppercase">Schwerpunkt/Schwerpunkt auswählen</h1>
+
+  <ng-container *ngIf="rundgang">
+
+    <select [(ngModel)]="rundgang.schwerpunkt"
+            class="form-control">
+     <!-- <option [ngValue]="getNewSchwerpunkt()">neu</option>-->
+      <option *ngFor="let u of schwerpunkte" [ngValue]="u">{{u.name}}</option>
+    </select>
+
+    <input class="d-none form-control " placeholder="Name des neuen Schwerpunktes"
+           *ngIf="rundgang.schwerpunkt && !rundgang.schwerpunkt.uid"
+           [(ngModel)]="rundgang.schwerpunkt.name"
+    />
+    <input class="form-control" disabled
+           *ngIf="rundgang.schwerpunkt && rundgang.schwerpunkt.uid"
+           [value]="rundgang.schwerpunkt.name"
+    />
+
+
+  </ng-container>
+
+
+  <div class="fixed-bottom m-3">
+    <a [routerLink]="['/rundgang', 'teilnehmer']"
+       [state]="{rundgang:rundgang}"
+       class="btn btn-xlg  btn-block btn-primary text-uppercase">
+      Weiter
+    </a>
+  </div>
+
+</div>
+

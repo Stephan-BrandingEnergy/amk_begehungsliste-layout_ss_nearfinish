@@ -1,0 +1,36 @@
+<div class="container-fluid h-100" style="background-color: rgba(59,102,136,0.7);">
+
+  <div class="row" [ngClass]="!currentUser?'h-100 ':''">
+
+    <h1 class="col-md text-center mt-5 text-white">AMK Begehungsliste</h1>
+
+    <img src="" alt="">
+
+    <div class="col-md fixed-bottom m-3">
+
+      <div class="panel">
+        <nag-login></nag-login>
+      </div>
+
+      <div class="panel  fixed-bottom m-3" *ngIf="currentUser">
+        <h2 class="text-center text-white">Willkommen {{currentUser.first_name}} {{currentUser.last_name}}!</h2>
+        <h2></h2>
+        <p>
+
+          <a [routerLink]="['/rundgang', 'verantwortlicher']" class="btn btn-xlg btn-info btn-block btn-primary text-uppercase">
+            Rundgang starten
+          </a>
+
+          <a [routerLink]="['/rundgang','list']" class="btn btn-xlg  btn-block btn-light text-uppercase">
+            Übersicht Rundgänge
+          </a>
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

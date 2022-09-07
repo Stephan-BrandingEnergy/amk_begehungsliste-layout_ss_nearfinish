@@ -1,0 +1,37 @@
+<div class="p-3">
+
+  <h1 class="btn btn-dark btn-block text-uppercase">Teilnehmer auswählen</h1>
+
+  <ng-container *ngIf="rundgang">
+
+    <div data-toggle="buttons">
+
+      <!-- [class.active] sets the .active class if the TN is in the list.
+            any css class can be used here -->
+      <label class="btn btn-light btn-block"
+             [class.active]="isTnInList(u, rundgang)"
+             *ngFor="let u of user"
+      >
+        <input type="checkbox"
+               class="d-none"
+               (change)="toggleTnInList(u, rundgang, $event)"
+               [ngModel]="isTnInList(u,rundgang)"
+        >
+        {{u.firstName}}
+        {{u.lastName}}
+      </label>
+    </div>
+
+  </ng-container>
+
+
+  <div class="fixed-bottom m-3">
+    <a [routerLink]="['/mangel', 'bereich']"
+       [state]="{rundgang:rundgang}"
+       class="btn btn-xlg  btn-block btn-primary text-uppercase">
+      Weiter
+    </a>
+  </div>
+
+</div>
+

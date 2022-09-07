@@ -1,0 +1,69 @@
+<div class="p-3">
+
+  <h1 class="btn btn-dark btn-block text-uppercase">Übersicht</h1>
+
+
+  <!-- Filter -->
+  <div class="my-3 d-flex mx-auto justify-content-center align-items-center">
+    <!--suppress XmlInvalidId -->
+    <label class="m-0" for="filter_nurOffeneMaengel-input">
+      Rundgänge
+    </label>
+    <mat-slide-toggle
+      [(ngModel)]="filter.nurOffeneMaengel"
+      id="filter_nurOffeneMaengel"
+      class="mx-2"
+    ></mat-slide-toggle>
+    <!--suppress XmlInvalidId -->
+    <label class="m-0" for="filter_nurOffeneMaengel-input">
+      Mängel
+    </label>
+  </div>
+
+
+  <div class="card">
+    <div class="p-1" style="height: calc(100vh - 223px);
+overflow: scroll;">
+
+      <table class="table table-sm w-100" matSort (matSortChange)="sortData($event)">
+        <tr>
+          <th mat-sort-header="datum">Datum</th>
+          <th class="d-none d-md-table-cell" mat-sort-header="ort">Schwerpunkt</th>
+          <th mat-sort-header="maengel">offene Mängel</th>
+          <th  class="d-none d-md-table-cell" mat-sort-header="verantwortlicher">Verantw.</th>
+       <!--   <th></th>-->
+        </tr>
+
+        <tbody *ngIf="viewstate.loading">
+          <tr>
+            <td colspan="5" class="text-center">Wird geladen…</td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr *ngFor="let rundgang of rundgaenge|RundgangFilter:filter">
+            <td> <a [routerLink]="['/rundgang', 'detail']" [queryParams]="{uid: rundgang.uid}">{{rundgang.kurztext}}</a></td>
+            <td  class="d-none d-md-table-cell">{{rundgang.schwerpunkt?.name}}</td>
+            <td>{{rundgang.maengel.length}}</td> <!-- text des ersten Mangels -->
+            <td  class="d-none d-md-table-cell">{{rundgang.verantwortlicher?.lastName}}</td>
+        <!--    <td>
+              <a mat-icon-button color="primary" [routerLink]="['/rundgang', 'verantwortlicher']" [queryParams]="{uid: rundgang.uid}">
+                <mat-icon>edit</mat-icon>
+              </a>
+            </td>-->
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+
+  <div class="fixed-bottom m-3">
+    <a [routerLink]="['/rundgang', 'verantwortlicher']" class="btn btn-xlg btn-info btn-block btn-primary text-uppercase">
+      Rundgang starten
+    </a>
+  </div>
+
+</div>
+

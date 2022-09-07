@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="de.brandingenergy.amkbegehungsliste" version="0.9.42" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+	<name>Amk Begehungsliste</name>
+	<description>Amk Begehungsliste mit Nutzung RFID Scan</description>
+	<author email="info@branding-energy.de" href="http://www.branding-energy.de">Branding Energy GmbH</author>
+	<content src="index.html"/>
+	<preference name="phonegap-version" value="cli-9.0.0"/>
+	<icon src="www/assets/icon.png"/>
+	<icon src="www/assets/splash.png"/>
+	<preference name="DisallowOverscroll" value="true"/>
+	<preference name="target-device" value="universal"/>
+	<plugin name="cordova-plugin-camera" spec="4.1.0"/>
+	<plugin name="cordova-plugin-device"/>
+	<plugin name="cordova-plugin-dialogs"/>
+	<plugin name="cordova-plugin-inappbrowser"/>
+	<plugin name="cordova-plugin-splashscreen"/>
+	<plugin name="cordova-plugin-whitelist"/>
+	<plugin name="cordova-plugin-file"/>
+	<plugin name="cordova-plugin-x-toast"/>
+
+	<platform name="ios">
+		<icon src="www/assets/res/icon/ios/icon-1024.png" width="1024" height="1024"/>
+		<icon src="www/assets/res/icon/ios/icon-small.png" width="29" height="29"/>
+		<icon src="www/assets/res/icon/ios/icon-small@2x.png" width="58" height="58"/>
+		<icon src="www/assets/res/icon/ios/icon-small@3x.png" width="87" height="87"/>
+		<icon src="www/assets/res/icon/ios/icon-small-40.png" width="40" height="40"/>
+		<icon src="www/assets/res/icon/ios/icon-small-40@2x.png" width="80" height="80"/>
+		<icon src="www/assets/res/icon/ios/icon-small-40@3x.png" width="120" height="120"/>
+		<icon src="www/assets/res/icon/ios/icon-small-50.png" width="50" height="50"/>
+		<icon src="www/assets/res/icon/ios/icon-small-50@2x.png" width="100" height="100"/>
+		<icon src="www/assets/res/icon/ios/icon.png" width="57" height="57"/>
+		<icon src="www/assets/res/icon/ios/icon@2x.png" width="114" height="114"/>
+		<icon src="www/assets/res/icon/ios/icon-60.png" width="60" height="60"/>
+		<icon src="www/assets/res/icon/ios/icon-60@2x.png" width="120" height="120"/>
+		<icon src="www/assets/res/icon/ios/icon-60@3x.png" width="180" height="180"/>
+		<icon src="www/assets/res/icon/ios/icon-72.png" width="72" height="72"/>
+		<icon src="www/assets/res/icon/ios/icon-72@2x.png" width="144" height="144"/>
+		<icon src="www/assets/res/icon/ios/icon-76.png" width="76" height="76"/>
+		<icon src="www/assets/res/icon/ios/icon-76@2x.png" width="152" height="152"/>
+		<icon src="www/assets/res/icon/ios/icon-167.png" width="167" height="167"/>
+		<icon src="www/assets/res/icon/ios/icon-83.5@2x.png" width="167" height="167"/>
+		<!--  Storyboard portrait  -->
+		<splash src="www/assets/res/screen/ios/Default@2x~iphone~anyany.png"/>
+		<splash src="www/assets/res/screen/ios/Default@2x~iphone~comany.png"/>
+		<splash src="www/assets/res/screen/ios/Default@3x~iphone~anyany.png"/>
+		<splash src="www/assets/res/screen/ios/Default@3x~iphone~comany.png"/>
+		<splash src="www/assets/res/screen/ios/Default@2x~ipad~anyany.png"/>
+		<splash src="www/assets/res/screen/ios/Default@2x~ipad~comany.png"/>
+		<edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
+			<string>App möchte auf die Kamera zugreifen</string>
+		</edit-config>
+		<edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
+			<string>App möchte auf die Kamera zugreifen</string>
+		</edit-config>
+
+	</platform>
+	<access origin="*"/>
+	<allow-intent href="http://*/*"/>
+	<allow-intent href="https://*/*"/>
+	<allow-intent href="tel:*"/>
+	<allow-intent href="sms:*"/>
+	<allow-intent href="mailto:*"/>
+	<allow-intent href="geo:*"/>
+	<platform name="ios">
+		<allow-intent href="itms:*"/>
+		<allow-intent href="itms-apps:*"/>
+	</platform>
+	<plugin name="phonegap-nfc" spec="https://github.com/fredmaggiowski/phonegap-nfc.git"/>
+	<config-file parent="NSCameraUsageDescription" platform="ios" target="*-Info.plist">
+		<string>Fotos von Störungen machen</string>
+	</config-file>
+</widget>

@@ -1,0 +1,31 @@
+<div class="p-3">
+
+  <h1 class="btn btn-dark btn-block text-uppercase">Verantwortliche/r Rundgang auswählen</h1>
+
+  <ng-container *ngIf="rundgang">
+
+    <select [(ngModel)]="rundgang.verantwortlicher"
+            class="form-control">
+      <!--   <option [ngValue]="getNewVerantw()">neu</option>-->
+      <option *ngFor="let u of user" [ngValue]="u">{{u.firstName}} {{u.lastName}}</option>
+    </select>
+    <input class="form-control" placeholder="Name des neuen Verantwortlichen"
+              *ngIf="rundgang.verantwortlicher && !rundgang.verantwortlicher.uid"
+              [(ngModel)]="rundgang.verantwortlicher.lastName"
+    />
+
+
+
+  </ng-container>
+
+
+  <div class="fixed-bottom m-3">
+    <a [routerLink]="['/rundgang', 'schwerpunkt']"
+       [state]="{rundgang:rundgang}"
+       class="btn btn-xlg  btn-block btn-primary text-uppercase">
+      Weiter
+    </a>
+  </div>
+
+</div>
+

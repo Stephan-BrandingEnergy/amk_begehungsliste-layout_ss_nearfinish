@@ -1,0 +1,33 @@
+<div class="panel mx-md-auto mt-5">
+
+  <p class="alert alert-info" *ngIf="viewstate.loading">Wird geladen…</p>
+
+  <!-- login box, ngNativeValidate prevents angular from disabling html5-validation -->
+  <form *ngIf="!currentUser && !viewstate.loading" class="d-flex flex-column" (submit)="login()" ngNativeValidate>
+
+    <div class="text-white text-center">
+      <h4>Willkommen! Bitte melden Sie sich an!</h4>
+    </div>
+
+    <div class="form-group">
+      <input class="form-control mb-2" id="username" type="text" name="username" title="Username" placeholder="Username"
+             [(ngModel)]="credentials.username" [disabled]="viewstate.loading" required />
+    </div>
+    <div class="form-group">
+      <input class="form-control mb-2" id="password" type="password" name="password" title="Password" placeholder="Password"
+             [(ngModel)]="credentials.password" [disabled]="viewstate.loading" required />
+    </div>
+
+    <button class="btn btn-primary btn-block btn-lg" type="submit">ANMELDEN</button>
+
+  </form>
+  <div *ngIf="!currentUser && !viewstate.loading" class="mt-2 text-white">
+    <span (click)="goToLink('https://amk-begehungsliste.branding-energy.de/passwortvergessen/?tx_felogin_pi1%5Bforgot%5D=1')">Passwort vergessen?</span></div>
+
+
+  <!-- logout box -->
+  <form *ngIf="currentUser" class="" (submit)="logout()" ngNativeValidate>
+    <!--   <h4 class="title">Willkommen {{currentUser.first_name}} {{currentUser.last_name}}.</h4>
+  <button class="btn btn-outline-primary btn-block" type="submit">Abmelden</button>-->
+  </form>
+</div>

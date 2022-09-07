@@ -1,0 +1,35 @@
+<div class="p-3">
+
+  <h1 class="btn btn-dark btn-block text-uppercase">Mangel Bereich</h1>
+
+  <ng-container *ngIf="mangel">
+
+    <select [(ngModel)]="mangel.bereich"
+            class="form-control">
+      <!--     <option [ngValue]="getNewBereich()">neu</option>-->
+        <option *ngFor="let u of bereiche" [ngValue]="u">{{u.name}}</option>
+      </select>
+
+      <input class="form-control" placeholder="Name der neuen Massnahme"
+             *ngIf="mangel.bereich && !mangel.bereich.uid"
+             [(ngModel)]="mangel.bereich.name"
+      />
+      <input class="d-none form-control" disabled
+             *ngIf="mangel.bereich && mangel.bereich.uid"
+             [value]="mangel.bereich.name"
+      />
+
+
+    </ng-container>
+
+
+    <div class="fixed-bottom m-3">
+      <a [routerLink]="['/mangel', 'text']"
+         [state]="{rundgang:rundgang,mangel:mangel}"
+         class="btn btn-xlg  btn-block btn-primary text-uppercase">
+        Weiter
+      </a>
+    </div>
+
+  </div>
+

@@ -1,0 +1,102 @@
+<div class="panel p-2">
+
+  <div class="loading alert alert-info" *ngIf="viewstate.loading">{{loadingtext}}
+    <div class="bt-3 text-center">
+      <button [routerLink]="['/amkbegehungsliste']" class="btn btn-light">Abbrechen</button>
+    </div>
+  </div>
+
+  <div *ngIf="rundgang">
+    <div><b>{{rundgang.data.ort}} {{rundgang.data.kurztext}} </b></div>
+
+    <section *ngIf="!viewstate.nfcWait">
+
+      <ul class="mt-2 nav nav-pills mb-2 flex-row">
+
+        <!--<li class="nav-item">
+              <a class="nav-link" (click)="viewstate.activeTab = 'protokolle'" [ngClass]="{active:viewstate.activeTab === 'protokolle'}">Protokolle</a>
+            </li>-->
+        <li *ngIf="rundgang.maengel" class="flex-fill text-center nav-item">
+          <a class="nav-link bg-light" (click)="viewstate.activeTab = 'stoerungen'"
+             [ngClass]="{active:viewstate.activeTab === 'stoerungen'}">
+            <span class="badge rounded badge-pill badge-danger p-1 mr-1 ">{{rundgang.maengel?.length}}</span>
+            Mängel
+          </a>
+        </li>
+      </ul>
+
+      <!-- Tab Störungen -->
+      <div class="card border-top-0" *ngIf="'stoerungen' === viewstate.activeTab">
+        <!--   <pre>{{modulData.rundgang.failures|json}}</pre>-->
+
+        <div class="card-body">
+          <mat-card class="bg-light">
+            <mat-card-content>
+              <section>
+                <mat-slide-toggle [checked]="filter.nurOffene" (change)="filter.nurOffene = $event.checked">
+                  nur offene Störungen
+                </mat-slide-toggle>
+              </section>
+            </mat-card-content>
+          </mat-card>
+
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Datum</th>
+                <th scope="col">Kommentar</th>
+                <th scope="col">Behoben?</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let f of rundgang.maengel | failuresFilter:filter">
+                <td style="width:20%;">
+                  {{f.tstamp|date:"medium":undefined:"de"}}
+                </td>
+                <td style="width:70%;">
+                  <app-stoerung
+                    [modul]="rundgang"
+                    [stoerung]="f">
+                  </app-stoerung>
+                </td>
+                <td style="width:10%;text-align:center;vertical-align: middle;">
+                  <mat-checkbox [checked]="f.status == 1"
+                                (change)="setStoerungStatus(f, f.status==1?0:1)"></mat-checkbox>
+                </td>
+
+              </tr>
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+      <footer class="d-flex align-items-center fixed-bottom footer  text-center">
+        <div class="icon-footer fixed-left rounded-circle"
+             (click)="openStoerungModal(rundgang,neueStoerungTemplate)">
+          <img class="" src="assets/img/icon_problem.png" alt="Problem">
+        </div>
+      </footer>
+
+      <ng-template #neueStoerungTemplate>
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Neue Störung</h4>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="stoerungModalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-stoerung [modul]="rundgang" (stoerungUpdated)="stoerungModalRef.hide()"></app-stoerung>
+        </div>
+      </ng-template>
+
+    </section>
+
+  </div>
+
+
+</div>

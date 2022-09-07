@@ -1,0 +1,25 @@
+<div class="p-3">
+
+  <h1 class="btn btn-dark btn-block text-uppercase">Zu erledigen bis</h1>
+
+  <ng-container *ngIf="mangel">
+
+    <div class="pr-3 pb-3 pe-3 w-auto text-center">
+      <input class="form-control mb-2" type="date"  placeholder="Termin"
+             [(ngModel)]="mangel.termin"  required />
+
+    </div>
+
+  </ng-container>
+
+
+  <div class="fixed-bottom m-3">
+    <a [routerLink]="['/mangel', 'overview']"
+       [state]="{rundgang:rundgang,mangel:mangel}"
+       class="btn btn-xlg  btn-block btn-primary text-uppercase">
+      Weiter
+    </a>
+  </div>
+
+</div>
+

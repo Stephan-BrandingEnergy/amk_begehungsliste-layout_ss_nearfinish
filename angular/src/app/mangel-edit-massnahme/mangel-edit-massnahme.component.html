@@ -1,0 +1,35 @@
+<div class="p-3">
+
+  <h1 class="btn btn-dark btn-block text-uppercase">Mangel Massnahme</h1>
+
+  <ng-container *ngIf="mangel">
+
+    <select [(ngModel)]="mangel.massnahme"
+            class="form-control">
+   <!--   <option [ngValue]="getNewMassnahme()">neu</option>-->
+      <option *ngFor="let u of massnahmen" [ngValue]="u">{{u.name}}</option>
+    </select>
+
+    <input class="form-control" placeholder="Name der neuen Massnahme"
+           *ngIf="mangel.massnahme && !mangel.massnahme.uid"
+           [(ngModel)]="mangel.massnahme.name"
+    />
+    <input class="d-none form-control" disabled
+           *ngIf="mangel.massnahme && mangel.massnahme.uid"
+           [value]="mangel.massnahme.name"
+    />
+
+
+  </ng-container>
+
+
+  <div class="fixed-bottom m-3">
+    <a [routerLink]="['/mangel', 'verantwortlicher']"
+       [state]="{rundgang:rundgang,mangel:mangel}"
+       class="btn btn-xlg  btn-block btn-primary text-uppercase">
+      Weiter
+    </a>
+  </div>
+
+</div>
+

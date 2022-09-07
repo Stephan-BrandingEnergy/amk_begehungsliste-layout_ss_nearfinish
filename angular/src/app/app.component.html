@@ -1,0 +1,57 @@
+<header *ngIf="currentUser" class="sticky-top d-block">
+
+  <nav class="navbar  navbar navbar-expand-lg navbar-dark bg-dark">
+    <span
+      [class.invisible]="this.router.url == '/'"
+      class="navbar-brand mr-4 ion-lg ion ion-ios-arrow-back" (click)="backClicked();">
+    </span>
+    <span class="navbar-brand">
+      <a class=""  [routerLink]="['/', '']" >
+        <img src="assets/img/kis-logo.png" alt="KIS Logo" />
+      </a>
+      <span class="header-version ml-3">
+        v{{versionsnummer}}
+      </span>
+      <span *ngIf="!numQueuedRequestParams" class="d-none header-sync text-success ion ion-ios-cloud-done"></span>
+
+      <span *ngIf="numQueuedRequestParams" (click)="sendQueuedRequests()"
+            class="d-none header-sync text-danger ion ion-ios-cloud-outline"> <!--{{ numQueuedRequestParams }}--></span>
+    </span>
+
+    <!-- display bx if there are queued status hnages -->
+
+
+    <div class="navbar-text ml-auto header-date">{{DateNow | date:'dd.MM.yyyy'}}</div>
+
+    <button class="navbar-toggler border-0" type="button" (click)="viewstate.navVisible=!viewstate.navVisible">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+  </nav>
+
+  <div class="collapse navbar-collapse" [ngClass]="{collapse:!viewstate.navVisible}">
+    <ul class="navbar-nav mr-auto">
+      <li *ngIf="currentUser" class="nav-item active">
+        <a class="nav-link" (click)="viewstate.navVisible=false" routerLinkActive="active" [routerLink]="'/'">Start</a>
+      </li>
+      <li *ngIf="currentUser" class="nav-item active">
+        <a class="nav-link" (click)="viewstate.navVisible=false" routerLinkActive="active" [routerLink]="'/amkbegehungsliste'">Begehungsliste</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" (click)="viewstate.navVisible=false" routerLinkActive="active" [routerLink]="'/content/index.php?id=77'">Impressum</a>
+      </li>
+      <li *ngIf="currentUser" class="bg-danger nav-item ">
+        <a class="nav-link" (click)="logout();viewstate.navVisible=false" routerLinkActive="active">
+          <span class="ion ion-md-exit"></span> ABMELDEN
+        </a>
+      </li>
+
+    </ul>
+
+  </div>
+</header>
+
+<main [ngClass]="(currentUser)?'pb-5 h-100':'h-100'" class="main-wrapper">
+  <router-outlet></router-outlet>
+</main>
+

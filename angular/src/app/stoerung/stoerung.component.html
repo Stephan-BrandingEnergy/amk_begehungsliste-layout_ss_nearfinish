@@ -1,0 +1,74 @@
+<!-- vorh. Störung -->
+<div *ngIf="stoerung.uid" (click)="openLogsModal(logEintraegeTemplate)">
+  {{stoerung.text}}
+
+</div>
+
+
+<!-- neue Störung -->
+<div *ngIf="!stoerung.uid">
+
+  <form (submit)="speichereNeueStoerung(stoerung)" ngNativeValidate>
+
+    <div class="form-group" *ngIf="foto">
+      <img [src]="foto" class="img-thumbnail" alt="Foto">
+    </div>
+
+    <div class="form-group d-flex flex-row">
+      <button class="btn btn-lg btn-outline-primary" type="button" (click)="takePicture()">
+        <span class="ion-md-camera"></span>
+      </button>
+
+      <input class="form-control ml-3" style="height: 44px;" type="text" name="stoerung_text" placeholder="Text…" required [(ngModel)]="stoerung.text">
+    </div>
+    <p class="alert alert-info" *ngIf="viewstate.loading">Wird gespeichert…</p>
+
+    <div class="form-group mt-2">
+      <button *ngIf="!viewstate.loading" type="submit" class="btn btn-lg btn-block btn-primary">Störung speichern</button>
+    </div>
+
+  </form>
+
+</div>
+
+
+<!-- Modal -->
+
+<ng-template #logEintraegeTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title">Störung vom {{stoerung.tstamp|date:"medium":undefined:"de"}}</h4><br>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="logsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <div class="form-group mb-2">
+      <b>Was? : {{stoerung.text}}</b>
+    </div>
+
+    <div class="form-group  mb-2" *ngIf="stoerung.images?.length">
+      <img *ngFor="let i of stoerung.images" src="{{i}}" class="img-thumbnail" alt="Bild des Mangels">
+    </div>
+
+    <div>
+      <div *ngFor="let log of getLogsSorted()">
+        <div class="icon_initials mr-2" *ngIf="log.user" title="{{log.user.firstName}} {{log.user.lastName}}">
+          <small>{{log.user.firstName | slice:0:1}}{{log.user.lastName | slice:0:1}}</small></div>
+        {{log.crdate|date:"medium":undefined:"de"}}: {{log.text}}
+
+      </div>
+    </div>
+
+
+    <form *ngIf="stoerung.status==0" class="mt-3" (submit)="speichereLogEintrag(neuerLogeintrag)">
+      <h6>Neuer Logeintrag</h6>
+
+      <input class="form-control w-50 float-left" type="text" required name="log_text" [(ngModel)]="neuerLogeintrag.text">
+
+      <button class="btn btn-success float-right" type="submit" [disabled]="!neuerLogeintrag.text">Speichern</button>
+
+    </form>
+
+  </div>
+</ng-template>
